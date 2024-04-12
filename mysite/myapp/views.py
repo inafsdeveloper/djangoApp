@@ -36,3 +36,17 @@ def listData(request):
     course = Course.objects.all()
     print(len(course))
     return render(request, 'courses_view.html', {'course': course})
+
+
+@csrf_exempt
+def deleteCourse(request, course_id):
+    Item = Course.objects.get(id=course_id)
+    Item.delete()
+    return HttpResponseRedirect('/')
+
+
+@csrf_exempt
+def searchCourse(request):
+    content = request.POST['query']
+    items = Course.objects.filter(title__icontains=content)
+    return render(request, 'courses_view.html', {'course': items})

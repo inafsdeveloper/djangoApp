@@ -22,4 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('loaddata', loadData),
     path('', listData),
+    path('deleteCourse/<int:course_id>/', deleteCourse),
+    path('searchBook/', searchCourse),
 ]
