@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Courses{% endblock %}
+{% block title %}Login{% endblock %}
 {% block content %}
 
     {% for crs in course %}
@@ -16,6 +16,11 @@
                         <p class="card-text col-lg-10 fs-5">{{ crs.overview }}</p>
                         <p class="card-text"><small class="text-muted fs-6">{{ crs.title }}</small></p>
                         <a class="card-text btn btn-lg btn-primary" href="{{ crs.url }}" target="_blank" role="button">Visit Website</a>
+                        <form action="/deleteCourse/{{crs.id}}/"
+                              style="display: inline;"
+                              method="post">{% csrf_token %}
+                            <input type="submit" class="card-text btn btn-lg btn-danger" value="Delete">
+                        </form>
                     </div>
                 </div>
             </div>
