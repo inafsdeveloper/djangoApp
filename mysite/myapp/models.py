@@ -6,3 +6,4 @@ class Course(models.Model):
     author = models.TextField()
     overview = models.TextField()
     image = models.TextField()
+    url = models.TextField()
